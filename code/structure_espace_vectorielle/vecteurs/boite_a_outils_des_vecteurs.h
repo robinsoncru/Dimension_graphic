@@ -7,6 +7,7 @@ bool sameDim(vecteur v1, vecteur v2);
 vecteur mallocVect(int dimension);
 void freeVecteur(vecteur *v);
 void printVecteur(vecteur v);
+vecteur createVecteur2D(float x, float y);
 // vecteur vecteurMiddleScreen();
 
 #endif

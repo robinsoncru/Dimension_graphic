@@ -10,51 +10,48 @@ matrice matriceNulle(int n, int p)
     return mat;
 }
 
-matrice produitMatriceParScalaire(float lambda, matrice mat)
+void produitMatriceParScalaire(float lambda, matrice mat_start, matrice mat_finish)
 {
+    assertAndLog(mat_finish.n == mat_start.n && mat_finish.p == mat_start.p, "produitMatriceParScalaire pb dim");
     int n, p;
-    n = mat.n;
-    p = mat.p;
-    matrice m1 = matriceNulle(n, p);
+    n = mat_start.n;
+    p = mat_start.p;
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < p; j++)
         {
 
-            m1.body[i][j] = lambda * mat.body[i][j];
+            mat_finish.body[i][j] = lambda * mat_start.body[i][j];
         }
     }
-    return m1;
 }
 
-matrice sommeMatrice(matrice m1, matrice m2)
+void sommeMatrice(matrice m1_start, matrice m2_start, matrice mat_finish)
 {
-    assertAndLog(m1.n == m2.n && m1.p == m2.p, "Matrice pas de meme dimension");
     int n, p;
-    n = m1.n;
-    p = m1.p;
-    matrice m = matriceNulle(n, p);
+    n = m1_start.n;
+    p = m1_start.p;
+    assertAndLog(n == m2_start.n && p == m2_start.p && n == mat_finish.n && p == mat_finish.p,
+                 "Matrice pb dimension");
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < p; j++)
         {
 
-            m.body[i][j] = m1.body[i][j] + m2.body[i][j];
+            mat_finish.body[i][j] = m1_start.body[i][j] + m2_start.body[i][j];
         }
     }
-    return m;
 }
-
-matrice produitMatricielle(matrice m1, matrice m2)
+void produitMatricielle(matrice m1_start, matrice m2_start, matrice mat_finish)
 {
     // On calcul ici m1 * m2 par la méthode naïve : des algorithmes existent pour * de pttes matrices
-    assert(m1.p == m2.n);
     int n, p, k;
     int sum;
-    n = m1.n;
-    p = m1.p;
-    k = m2.p;
-    matrice mat = matriceNulle(n, k);
+    n = m1_start.n;
+    p = m1_start.p;
+    k = m2_start.p;
+    assertAndLog(p == m2_start.n && mat_finish.n == n && mat_finish.p == k, "prodMat pb dim");
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < k; j++)
@@ -62,12 +59,11 @@ matrice produitMatricielle(matrice m1, matrice m2)
             sum = 0;
             for (int l = 0; l < p; l++)
             {
-                sum += m1.body[i][k] + m2.body[k][j];
+                sum += m1_start.body[i][k] + m2_start.body[k][j];
             }
-            mat.body[i][j] = sum;
+            mat_finish.body[i][j] = sum;
         }
     }
-    return mat;
 }
 
 bool egaliteMatrice(matrice m1, matrice m2)

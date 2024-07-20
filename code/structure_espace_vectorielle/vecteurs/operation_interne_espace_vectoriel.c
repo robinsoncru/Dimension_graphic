@@ -9,27 +9,24 @@ vecteur vecteurNul(int dimension)
     return v;
 }
 
-vecteur add(vecteur v1, vecteur v2)
+void add(vecteur v1, vecteur v2, vecteur v_finish)
 {
-    assertAndLog(sameDim(v1, v2), "add : vecteurs pas meme dimension");
+    assertAndLog(sameDim(v1, v2) && sameDim(v1, v_finish), "add : vecteurs pas meme dimension");
     int n = v1.n;
-    vecteur v = mallocVect(n);
     for (int i = 0; i < n; i++)
     {
-        v.coord[i] = v1.coord[i] + v2.coord[i];
+        v_finish.coord[i] = v1.coord[i] + v2.coord[i];
     }
-    return v;
 }
 
-vecteur extMult(float lambda, vecteur v1)
+void extMult(float lambda, vecteur v1, vecteur v_finish)
 {
+    assertAndLog(sameDim(v1, v_finish), "extMult : pb dim");
     int n = v1.n;
-    vecteur v = mallocVect(n);
     for (int i = 0; i < n; i++)
     {
-        v.coord[i] = lambda * v1.coord[i];
+        v_finish.coord[i] = lambda * v1.coord[i];
     }
-    return v;
 }
 
 bool egaliteVect(vecteur v1, vecteur v2)
@@ -46,10 +43,9 @@ bool egaliteVect(vecteur v1, vecteur v2)
     return true;
 }
 
-vecteur appLin(matrice mat, vecteur v)
+void appLin(matrice mat, vecteur v, vecteur u)
 {
-    assertAndLog(mat.p == v.n, "appLin dim diff");
-    vecteur u = mallocVect(mat.n);
+    assertAndLog(mat.p == v.n && u.n == mat.n, "appLin dim diff");
     int s;
     for (int i = 0; i < mat.n; i++)
     {
@@ -61,5 +57,4 @@ vecteur appLin(matrice mat, vecteur v)
 
         u.coord[i] = s;
     }
-    return u;
 }

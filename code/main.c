@@ -42,5 +42,6 @@ int main(int argc, char *argv[])
             update(cache);
         }
     }
+    freeVecteur(&v_middle);
     return quit(cache);
 }

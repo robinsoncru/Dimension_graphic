@@ -4,10 +4,10 @@
 #include "boite_a_outils_des_vecteurs.h"
 
 vecteur vecteurNul(int dimension);
-vecteur add(vecteur v1, vecteur v2);
-vecteur extMult(float lambda, vecteur v1);
+void add(vecteur v1, vecteur v2, vecteur v_finish);
+void extMult(float lambda, vecteur v1, vecteur v_finish);
 bool egaliteVect(vecteur v1, vecteur v2);
-vecteur appLin(matrice mat, vecteur v);
+void appLin(matrice mat, vecteur v, vecteur u);
 
 
 #endif

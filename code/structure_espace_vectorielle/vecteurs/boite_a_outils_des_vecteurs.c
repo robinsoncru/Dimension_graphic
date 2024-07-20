@@ -12,6 +12,14 @@ vecteur mallocVect(int dimension)
     return v;
 }
 
+vecteur createVecteur2D(float x, float y)
+{
+    vecteur u = mallocVect(2);
+    u.coord[0] = x;
+    u.coord[1] = y;
+    return u;
+}
+
 void printVecteur(vecteur v)
 {
     for (int i = 0; i < v.n; i++)
