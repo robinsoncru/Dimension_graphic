@@ -1,0 +1,9 @@
+#ignore les executables ainsi que les fichiers de parametrage
+.vscode/*
+.vscode
+code/*.o
+code/.vscode/*
+code/.vscode
+code/*.out
+code/.VSCodeCounter/*
+code/.VSCodeCounter
