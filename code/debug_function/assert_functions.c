@@ -1,5 +1,11 @@
 #include "assert_functions.h"
 
+
+
+void flush() {
+    fflush(stdout);
+}
+
 void assertAndLog(bool condition, char *message)
 {
     if (!condition)
@@ -9,4 +15,5 @@ void assertAndLog(bool condition, char *message)
         printf("\n");
         assert(false);
     }
+    flush();
 }

@@ -9,7 +9,7 @@ typedef struct
 {
     int n;
     int p;
-    float **body /*
+    float **body; /*
           --> mat colonnes
          | 
          v

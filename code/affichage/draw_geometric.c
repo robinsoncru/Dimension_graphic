@@ -2,16 +2,6 @@
 
 
 
-SDL_Color orange = {255, 127, 40, 255};
-SDL_Color blue = {0, 0, 255, 255};
-SDL_Color red = {255, 0, 0, 255};
-SDL_Color green = {0, 255, 0, 255};
-SDL_Color white = {255, 255, 255, 255};
-SDL_Color black = {0, 0, 0, 255};
-SDL_Color gold = {255, 215, 0, 255};
-SDL_Color silver = {192, 192, 192, 255};
-SDL_Color turquoise = {48, 213, 200};
-SDL_Color pink = {255,20,147};
 
 /*
 

@@ -4,7 +4,9 @@
 #include <SDL2/SDL.h>
 #include "../fondamental_structures/basic_headers.h"
 
-#define LG_WINDOW 640
+#define LONG_WINDOW 800
+#define LARG_WINDOW 800
+
 #define FRAME 16
 
 

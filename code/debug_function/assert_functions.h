@@ -4,5 +4,6 @@
 #include "../fondamental_structures/basic_headers.h"
 
 void assertAndLog(bool condition, char *message);
+void flush();
 
 #endif

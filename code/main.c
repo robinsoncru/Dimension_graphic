@@ -7,7 +7,6 @@ int quit(GraphicCache *cache)
     return EXIT_SUCCESS;
 }
 
-
 int main(int argc, char *argv[])
 {
     GraphicCache *cache = initCache();
@@ -17,6 +16,10 @@ int main(int argc, char *argv[])
         return quit(cache);
     }
 
+    vecteur v_middle = vecteurNul(2);
+
+    v_middle.coord[0] = 0.5;
+    v_middle.coord[1] = 0.5;
     // Start the game
     while (cache->is_playing)
     {
@@ -29,12 +32,14 @@ int main(int argc, char *argv[])
             // clear the window
             SDL_RenderClear(cache->draw);
 
-            update(cache);
+            display(v_middle, cache);
 
             // Rafraichit l'ecran
             SDL_RenderPresent(cache->draw);
 
             // update the data in the cache
+
+            update(cache);
         }
     }
     return quit(cache);

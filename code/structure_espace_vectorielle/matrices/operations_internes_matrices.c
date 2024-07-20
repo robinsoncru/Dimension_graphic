@@ -1,4 +1,4 @@
-#include "boite_a_outils_des_matrices.h"
+#include "operations_internes_matrices.h"
 
 matrice matriceNulle(int n, int p)
 {
@@ -10,27 +10,8 @@ matrice matriceNulle(int n, int p)
     return mat;
 }
 
-void printMatrice(matrice mat)
+matrice produitMatriceParScalaire(float lambda, matrice mat)
 {
-    for (int i = 0; i < mat.n; i++)
-    {
-        printf(" %d  ", i);
-    }
-    printf("\n");
-    for (int i = 0; i < mat.n; i++)
-    {
-        for (int j = 0; j < mat.p; j++)
-        {
-            float valeur = ((int)mat.body[i][j] * 10) / 10;
-            printf(" %f", valeur);
-        }
-        printf("\n");
-    }
-    printf("\n");
-    printf("\n");
-}
-
-matrice produitMatriceParScalaire(float lambda, matrice mat) {
     int n, p;
     n = mat.n;
     p = mat.p;
@@ -39,15 +20,29 @@ matrice produitMatriceParScalaire(float lambda, matrice mat) {
     {
         for (int j = 0; j < p; j++)
         {
-            
+
             m1.body[i][j] = lambda * mat.body[i][j];
         }
     }
     return m1;
 }
 
-matrice sommeMatrice(matrice m1, matrice m2) {
-    
+matrice sommeMatrice(matrice m1, matrice m2)
+{
+    assertAndLog(m1.n == m2.n && m1.p == m2.p, "Matrice pas de meme dimension");
+    int n, p;
+    n = m1.n;
+    p = m1.p;
+    matrice m = matriceNulle(n, p);
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < p; j++)
+        {
+
+            m.body[i][j] = m1.body[i][j] + m2.body[i][j];
+        }
+    }
+    return m;
 }
 
 matrice produitMatricielle(matrice m1, matrice m2)
@@ -73,4 +68,24 @@ matrice produitMatricielle(matrice m1, matrice m2)
         }
     }
     return mat;
+}
+
+bool egaliteMatrice(matrice m1, matrice m2)
+{
+    assertAndLog(m1.n == m2.n && m1.p == m2.p, "Matrice pas de meme dimension");
+    int n, p;
+    n = m1.n;
+    p = m1.p;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < p; j++)
+        {
+
+            if (m1.body[i][j] != m2.body[i][j])
+            {
+                return false;
+            }
+        }
+    }
+    return true;
 }

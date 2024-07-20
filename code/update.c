@@ -18,10 +18,12 @@ void update(GraphicCache *cache)
 
         default:
             // called if any input is made
+            onInput(cache);
             break;
         }
     }
     else
     {
+        // on fait rien pour l'instant
     }
 }

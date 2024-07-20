@@ -24,7 +24,7 @@ GraphicCache *initCache()
     {
         fprintf(stderr, "Erreur SDL_Init : %s", SDL_GetError());
     }
-    else if (0 != SDL_CreateWindowAndRenderer(LG_WINDOW, LG_WINDOW, SDL_WINDOW_RESIZABLE, &(cache->window), &(cache->draw)))
+    else if (0 != SDL_CreateWindowAndRenderer(LONG_WINDOW, LARG_WINDOW, SDL_WINDOW_RESIZABLE, &(cache->window), &(cache->draw)))
     {
         fprintf(stderr, "Erreur SDL_CreateWindowAndRenderer : %s", SDL_GetError());
     }
