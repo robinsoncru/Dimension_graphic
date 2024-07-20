@@ -9,5 +9,9 @@ void sommeMatrice(matrice m1_start, matrice m2_start, matrice mat_finish);
 void produitMatricielle(matrice m1_start, matrice m2_start, matrice mat_finish);
 bool egaliteMatrice(matrice m1, matrice m2);
 
+matrice giproduitMatriceParScalaire(float lambda, matrice mat_start);
+matrice gisommeMatrice(matrice m1_start, matrice m2_start);
+matrice giproduitMatricielle(matrice m1_start, matrice m2_start);
+
 
 #endif

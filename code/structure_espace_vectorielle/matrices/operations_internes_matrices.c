@@ -85,3 +85,26 @@ bool egaliteMatrice(matrice m1, matrice m2)
     }
     return true;
 }
+
+// Fonctions qui renvoient une nouvelle matrice, attention à bien la free
+
+matrice giproduitMatriceParScalaire(float lambda, matrice mat_start)
+{
+    matrice mat_final = matriceNulle(mat_start.n, mat_start.p);
+    produitMatriceParScalaire(lambda, mat_start, mat_final);
+    return mat_final;
+}
+
+matrice gisommeMatrice(matrice m1_start, matrice m2_start)
+{
+    matrice mat = matriceNulle(m1_start.n, m1_start.p);
+    sommeMatrice(m1_start, m2_start, mat);
+    return mat;
+}
+
+matrice giproduitMatricielle(matrice m1_start, matrice m2_start)
+{
+    matrice mat = matriceNulle(m1_start.n, m2_start.p);
+    produitMatricielle(m1_start, m2_start, mat);
+    return mat;
+}
