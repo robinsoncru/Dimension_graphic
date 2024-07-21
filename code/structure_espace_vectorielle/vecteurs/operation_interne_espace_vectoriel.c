@@ -3,6 +3,7 @@
 /* Ces opérations sont contenues à l'intérieur de l'espace vectorielle, elles ne doivent donc être utilisées
 qu'à l'initialisation */
 
+
 vecteur vecteurNul(int dimension)
 {
     vecteur v = {.n = dimension, .coord = calloc(dimension, sizeof(float))};

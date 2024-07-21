@@ -13,7 +13,7 @@ SDL_Color pink = {255, 20, 147};
 
 int vect_space_to_screen(float f)
 {
-    return (int)(f * LONG_WINDOW * 0.5); // Les floats vont de 0 à 1
+    return (int)(f * LONG_WINDOW * 0.5); // Les floats vont de -1 à 1
 }
 
 void drawVector(vecteur v_or, vecteur v, SDL_Color color, GraphicCache *cache)
@@ -31,29 +31,27 @@ void drawVector(vecteur v_or, vecteur v, SDL_Color color, GraphicCache *cache)
     drawLine(cache->draw, color, xmiddle + x0, ymiddle - y0, xmiddle + x0 + x, ymiddle - y0  - y);
 }
 
-void display(vecteur v, GraphicCache *cache)
+void drawFigures(vecteur v_or, tab_vecteurs vecteurs, SDL_Color color, GraphicCache *cache) {
+    // Dessine les vecteurs les uns à la suite des autres à partir de v_or
+    for (int i=0; i<vecteurs.nb_vecteur; i++) {
+        printVecteur(*vecteurs.tab[i]);
+        printVecteur(v_or);
+        drawVector(v_or, *vecteurs.tab[i], color, cache);
+        add(v_or, *vecteurs.tab[i], v_or);
+    }
+}
+
+void display(tab_vecteurs vectors, vecteur v_or, GraphicCache *cache)
 {
     SDL_Rect screen = {.h = LARG_WINDOW, .w = LONG_WINDOW, .x = 0, .y = 0};
     drawRect(cache->draw, black, screen);
     // Initialise un fond noir
-    vecteur v0 = vecteurNul(2);
-    vecteur v_ech1 = createVecteur2D(-0.4, 0.4);
-    vecteur v_ech2 = createVecteur2D(0.4, -0.4);
-    vecteur v_ech3 = createVecteur2D(-0.4, -0.4);
-    vecteur cote0 = createVecteur2D(0.8, 0);
-    vecteur cote1 = createVecteur2D(0, 0.8);
 
-    drawVector(v_ech1, cote0, pink, cache);
-    drawVector(v_ech2, cote1, pink, cache);
-    drawVector(v_ech3, cote0, pink, cache);
-    drawVector(v_ech3, cote1, pink, cache);
-
-    freeVecteur(&v0);
-    freeVecteur(&v_ech1);
-    freeVecteur(&v_ech2);
-    freeVecteur(&v_ech3);
-    freeVecteur(&cote0);
-    freeVecteur(&cote1);
+    drawFigures(v_or, vectors, pink, cache);
+    v_or.coord[0] = -0.4;
+    v_or.coord[1] = 0.4;
+    // drawVector(v_or, *vectors.tab[0], pink, cache);
+    
     // SDL_Rect r = {.h=40, .w= 30, .x = 0, .y = 0};
     // drawRect(cache->draw, red, r);
     // SDL_Rect r1 = {.h=40, .w= 30, .x = 50, .y = 50};

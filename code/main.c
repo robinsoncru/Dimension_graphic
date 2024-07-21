@@ -20,6 +20,17 @@ int main(int argc, char *argv[])
 
     v_middle.coord[0] = 0.5;
     v_middle.coord[1] = 0.5;
+
+    // vecteur v0 = vecteurNul(2);
+    vecteur v_ech1 = createVecteur2D(-0.4, 0.4);
+    vecteur cote0 = createVecteur2D(0.8, 0);
+    vecteur cote1 = createVecteur2D(0, -0.8);
+
+    tab_vecteurs vectors = create_tab_vecteurs(4, 2);
+    vectors.tab[0] = &cote0;
+    vectors.tab[1] = &cote1;
+    extMult(-1, cote0, *vectors.tab[2]);
+    extMult(-1, cote1, *vectors.tab[3]);
     // Start the game
     while (cache->is_playing)
     {
@@ -32,7 +43,7 @@ int main(int argc, char *argv[])
             // clear the window
             SDL_RenderClear(cache->draw);
 
-            display(v_middle, cache);
+            display(vectors, v_ech1, cache);
 
             // Rafraichit l'ecran
             SDL_RenderPresent(cache->draw);
@@ -42,6 +53,7 @@ int main(int argc, char *argv[])
             update(cache);
         }
     }
-    freeVecteur(&v_middle);
+    free_tab_vecteurs(&vectors);
+    freeVecteur(&v_ech1);
     return quit(cache);
 }

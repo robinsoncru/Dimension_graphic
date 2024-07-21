@@ -30,4 +30,10 @@ typedef struct {
 } vecteur;
 // Les vecteurs
 
+
+typedef struct {
+    vecteur **tab;
+    int nb_vecteur;
+} tab_vecteurs;
+
 #endif

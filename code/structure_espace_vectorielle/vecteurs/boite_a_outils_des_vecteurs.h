@@ -9,5 +9,7 @@ void freeVecteur(vecteur *v);
 void printVecteur(vecteur v);
 vecteur createVecteur2D(float x, float y);
 // vecteur vecteurMiddleScreen();
+void free_tab_vecteurs(tab_vecteurs *vecteurs);
+tab_vecteurs create_tab_vecteurs(int nb_vecteurs, int dimension);
 
 #endif

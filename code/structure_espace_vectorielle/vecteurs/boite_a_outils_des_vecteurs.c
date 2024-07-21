@@ -38,6 +38,28 @@ void freeVecteur(vecteur *v)
     v->n = 0;
 }
 
+void free_tab_vecteurs(tab_vecteurs *vecteurs)
+{
+    for (int i = 0; i < vecteurs->nb_vecteur; i++)
+    {
+        freeVecteur(vecteurs->tab[i]);
+    }
+    free(vecteurs->tab);
+    vecteurs->nb_vecteur = 0;
+}
+
+tab_vecteurs create_tab_vecteurs(int nb_vecteurs, int dimension)
+{
+    // Renvoie une liste de pointeurs de vecteurs vide, deja dimensionné
+    tab_vecteurs vectors = {.nb_vecteur = nb_vecteurs, .tab = malloc(nb_vecteurs * sizeof(vecteur*))};
+    for (int i = 0; i < nb_vecteurs; i++)
+    {
+        vecteur v = {.n = dimension, .coord = NULL};
+        vectors.tab[i] = &v;
+    }
+    return vectors;
+}
+
 // vecteur vecteurMiddleScreen() {
 //     vecteur v = mallocVect(2);
 //     v.coord[0] = 0.5;
